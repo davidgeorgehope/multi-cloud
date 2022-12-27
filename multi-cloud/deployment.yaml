@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: multi-cloud
-        image: multi-cloud:latest
+        image: djhope99/cloud-repo:multi-cloud 
         ports:
         - containerPort: 8080
