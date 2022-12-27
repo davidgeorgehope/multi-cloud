@@ -17,3 +17,10 @@ spec:
         image: djhope99/cloud-repo:multi-cloud 
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: config-volume
+          mountPath: /config
+      volumes:
+      - name: config-volume
+        secret:
+          secretName: my-app-config
