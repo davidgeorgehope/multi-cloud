@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.elastic</groupId>
-	<artifactId>multi-cloud</artifactId>
+	<artifactId>aws-multi-cloud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>multi-cloud</name>
 	<description>A multi-cloud demo </description>
