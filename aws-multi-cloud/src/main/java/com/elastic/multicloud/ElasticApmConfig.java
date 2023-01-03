@@ -2,6 +2,8 @@ package com.elastic.multicloud;
 import co.elastic.apm.attach.ElasticApmAttacher;
 import jakarta.annotation.PostConstruct;
 import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -32,9 +34,11 @@ public class ElasticApmConfig {
 
     private static final String LOG_LEVEL_KEY = "log_level";
     private String logLevel;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ElasticApmConfig.class);
 
     @PostConstruct
     public void init() {
+        LOGGER.info(environment);
 
         Map<String, String> apmProps = new HashMap<>(6);
         apmProps.put(SERVER_URL_KEY, serverUrl);
