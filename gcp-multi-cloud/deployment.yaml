@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: multi-cloud
-        image: djhope99/cloud-repo:multi-cloud
+        image: djhope99/cloud-repo:gcp-multi-cloud
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
