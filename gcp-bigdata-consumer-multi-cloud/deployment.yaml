@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcp-bigdata-consumer-multi-cloud
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gcp-bigdata-consumer-multi-cloud
+  template:
+    metadata:
+      labels:
+        app: gcp-bigdata-consumer-multi-cloud
+    spec:
+      containers:
+      - name: gcp-bigdata-consumer-multi-cloud
+        image: djhope99/gcp-bigdata-consumer-multi-cloud:gcp-bigdata-consumer-multi-cloud
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: config-volume
+          mountPath: /config
+      volumes:
+      - name: config-volume
+        secret:
+          secretName: my-app-config-gcp-bigdata

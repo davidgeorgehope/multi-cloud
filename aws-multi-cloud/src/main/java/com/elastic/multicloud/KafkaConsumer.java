@@ -1,5 +1,7 @@
 package com.elastic.multicloud;
 
+import co.elastic.apm.api.ElasticApm;
+import co.elastic.apm.api.Span;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +25,10 @@ public class KafkaConsumer {
     public Flux<String> subscribe() {
         return reactiveKafkaConsumerTemplate
                 .receiveAutoAck()
-                .doOnNext(consumerRecord -> LOGGER.info("received key={}, value={} from topic={}, offset={}",
-                        consumerRecord.key(), consumerRecord.value(), consumerRecord.topic(), consumerRecord.offset()))
+                .doOnNext(consumerRecord ->
+                        LOGGER.info("received key={}, value={} from topic={}, offset={}",consumerRecord.key(), consumerRecord.value(), consumerRecord.topic(), consumerRecord.offset()))
+
+
                 .map(kafkaMessageProcessor::processMessage);
     }
 

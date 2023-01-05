@@ -1,6 +1,8 @@
 package com.elastic.multicloud;
 
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,13 +23,17 @@ public class MyController {
 
     @GetMapping("/{id}")
     public Mono<String> getById(@PathVariable String id) {
-        exampleService.processInBackground();
         return service.getById(id);
     }
 
     @GetMapping
     public Flux<String> getAll() {
         return service.getAll();
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void doSomethingAfterStartup() {
+        exampleService.processInBackground();
     }
 
 

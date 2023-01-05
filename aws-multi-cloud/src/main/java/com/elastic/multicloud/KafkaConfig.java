@@ -53,6 +53,7 @@ public class KafkaConfig {
         props.put("acks",acKs);
         props.put("bootstrap.servers",bootstrapServers);
 
+
         ReceiverOptions<String, String> basicReceiverOptions = ReceiverOptions.create(props);
         return basicReceiverOptions.subscription(Collections.singletonList(topicName));
     }

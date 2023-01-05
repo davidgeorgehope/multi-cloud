@@ -49,6 +49,8 @@ public class ElasticApmConfig {
         apmProps.put(LOG_LEVEL_KEY, logLevel);
         apmProps.put("enable_experimental_instrumentations","true");
         apmProps.put("profiling_inferred_spans_enabled", "true");
+        apmProps.put("message_batch_strategy","SINGLE_HANDLING");
+
 
         ElasticApmAttacher.attach(apmProps);
     }
