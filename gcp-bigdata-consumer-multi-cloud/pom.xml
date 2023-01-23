@@ -16,6 +16,19 @@
 	<properties>
 		<java.version>19</java.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.google.cloud</groupId>
+				<artifactId>libraries-bom</artifactId>
+				<version>26.3.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -41,7 +54,6 @@
 			<groupId>io.projectreactor.kafka</groupId>
 			<artifactId>reactor-kafka</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>co.elastic.apm</groupId>
 			<artifactId>apm-agent-attach</artifactId>
@@ -58,6 +70,10 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+			<dependency>
+				<groupId>com.google.cloud</groupId>
+				<artifactId>google-cloud-bigquery</artifactId>
+			</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

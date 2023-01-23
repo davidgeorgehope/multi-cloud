@@ -21,7 +21,13 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /config
+        - name: bigdata-creds-volume
+          mountPath: /bigdata-creds
+
       volumes:
       - name: config-volume
         secret:
           secretName: my-app-config-gcp-bigdata
+      - name: bigdata-creds-volume
+        secret:
+          secretName: bigdata-creds 

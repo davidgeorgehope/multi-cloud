@@ -38,9 +38,7 @@ class ExampleService {
 
                 ProducerRecord producerRecord = new ProducerRecord<>("gcpTopic", s);
 
-                Mono.fromRunnable(() -> {
-                    kafkaTemplate.send(producerRecord);
-                });
+                kafkaTemplate.send(producerRecord);
 
 
 
