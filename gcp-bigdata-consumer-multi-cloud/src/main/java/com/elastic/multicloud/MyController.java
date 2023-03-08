@@ -42,7 +42,7 @@ public class MyController {
 
     @PostMapping("/publish")
     public Mono<Void> sendMessage(@RequestBody String message) {
-        ProducerRecord producerRecord = new ProducerRecord<>("myTopic", message);
+        ProducerRecord producerRecord = new ProducerRecord<>("topic_2", message);
 
         /*Transaction transaction = ElasticApm.currentTransaction();
 
